@@ -1,0 +1,51 @@
+<script src="../includes/include.js">
+</script>
+
+<html>
+<div w3-include-html="../nav.html"></div>
+
+
+<head>
+    <title>Makar Sons Trading </title>
+    <link href="../flex.css" rel="stylesheet">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <section class="sale-header">
+        <h1 id="sale">Makar Sons Trading</h1>
+        <h2 id="sale">Canada Inc.</h2>
+    </section>
+    <!--<form action="action_page.ph    p" method="post">--->
+    <div class="imgcontainer">
+
+    </div>
+    <section class="login">
+        <br>
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit">Login</button>
+            <label>
+			<input type="checkbox" checked="checked" name="remember"> Remember me
+		  </label>
+        </div>
+
+        <div class="container">
+            <button type="button">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+        <!--</form>-->
+    </section>
+</body>
+<div w3-include-html="contactUS.html"></div>
+
+</html>
+
+<script>
+    w3.includeHTML();
+</script>

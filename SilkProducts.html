@@ -1,0 +1,129 @@
+<script src="/includes/include.js">
+</script>
+
+
+<html>
+<div w3-include-html="nav.html"></div>
+
+<head>
+    <title> Makar Sons Trading </title>
+    <link href="flex.css" rel="stylesheet">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <section class="sale-header">
+        <h1 id="sale">Makar Sons Trading</h1>
+        <h2 id="sale">Canada Inc.</h2>
+    </section>
+
+
+    <section class="products">
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="/img/SilkDishwash.jpeg">
+
+            </div>
+            <div class="product-info">
+                <h5>Silk Dishwash 750 ml</h5>
+            </div>
+        </div>
+
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="/img/SilkGroup.jpeg">
+
+            </div>
+            <div class="product-info">
+                <h5>Silk Hand wash 500 ml</h5>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <img src="/img/SilkSoap.jpeg">
+
+            </div>
+            <div class="product-info">
+                <h5>Silk Soap 120 g</h5>
+            </div>
+        </div>
+
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="/img/SilkShampoo.jpeg">
+
+            </div>
+            <div class="product-info">
+                <h5>Silk Shampoo & Conditioner 400 ml</h5>
+            </div>
+        </div>
+    </section>
+
+
+    <script type='text/javascript'>
+        var scroll = document.querySelector('.products');
+
+        scroll.addEventListener('wheel', (evt) => {
+            evt.preventDefault();
+
+            var y = evt.clientY;
+            var rect = scroll.getBoundingClientRect();
+            if (rect.top <= y && rect.bottom >= y) {
+                scroll.scrollLeft += evt.deltaY * 0.8;
+            }
+        });
+
+        let pos = {
+            top: 0,
+            left: 0,
+            x: 0,
+            y: 0
+        };
+        const mouseMoveHandler = function(e) {
+            // How far the mouse has been moved
+
+            const dx = e.changedTouches[0].clientX - pos.x;
+            console.log(dx, pos);
+            // Scroll the element
+            scroll.scrollLeft = pos.left - (dx * 0.75);
+        };
+        const mouseUpHandler = function() {
+            scroll.removeEventListener('touchmove', mouseMoveHandler);
+            scroll.removeEventListener('touchleave', mouseUpHandler);
+            scroll.removeEventListener('touchend', mouseUpHandler);
+            scroll.removeEventListener('touchcancel', mouseUpHandler);
+
+        };
+        const mouseDownHandler = function(e) {
+
+            pos = {
+                // The current scroll
+                left: scroll.scrollLeft,
+                top: scroll.scrollTop,
+                // Get the current mouse position
+                x: e.changedTouches[0].clientX,
+                y: e.changedTouches[0].clientY,
+            };
+
+            scroll.addEventListener('touchmove', mouseMoveHandler);
+            scroll.addEventListener('touchleave', mouseUpHandler);
+            scroll.addEventListener('touchend', mouseUpHandler);
+            scroll.addEventListener('touchcancel', mouseUpHandler);
+        };
+
+        scroll.addEventListener('touchstart', mouseDownHandler);
+    </script>
+</body>
+
+<div w3-include-html="/view/contactUS.html"></div>
+
+</html>
+
+<script>
+    w3.includeHTML();
+</script>
