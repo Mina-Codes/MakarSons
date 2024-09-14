@@ -101,3 +101,84 @@ section {
     position: fixed;
 }
 
+/* Centering the product cards horizontally and vertically */
+.products {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;  /* Center vertically */
+    overflow-x: auto;  /* Enable horizontal scrolling */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+    gap: 16px;  /* Space between product cards */
+    padding: 20px;
+    min-height: 100vh;  /* Ensure container takes full screen height */
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+/* Center the section on the page */
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;  /* Center the content horizontally */
+    align-items: center;  /* Center the content vertically */
+    margin: 0;
+    padding: 0;
+}
+
+.product-card {
+    min-width: 300px;  /* Same size dynamically for all cards */
+    max-width: 300px;
+    flex: 0 0 auto;  /* Prevent cards from shrinking or growing */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    padding: 10px;  /* Add padding for better spacing */
+}
+
+.product-card:hover {
+    transform: scale(1.05);  /* Slight zoom effect on hover */
+}
+
+.products::-webkit-scrollbar {
+    height: 8px;
+}
+
+.products::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.product-image img {
+    width: 100%;  /* Ensure images fit the product card */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.product-info {
+    font-size: 1.2rem;  /* Resize font to fit within the card */
+    text-align: center;
+    margin-top: 10px;
+}
+
+h5 {
+    font-size: 1rem;  /* Resize product title */
+    margin: 5px 0;
+}
+
+@media (max-width: 600px) {
+    .product-card {
+        min-width: 200px;  /* Make cards smaller on small screens */
+        max-width: 200px;
+    }
+    
+    .product-info {
+        font-size: 1rem;  /* Adjust content size for smaller screens */
+    }
+    
+    h5 {
+        font-size: 0.9rem;  /* Smaller text for smaller screens */
+    }
+}
