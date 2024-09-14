@@ -101,18 +101,19 @@ section {
     position: fixed;
 }
 
-/* Centering the product cards horizontally */
+/* Ensure smooth horizontal scrolling and snap behavior */
 .products {
     display: flex;
     flex-direction: row;
     justify-content: center;  /* Center the cards horizontally */
     gap: 16px;  /* Space between product cards */
     padding: 20px;
-    overflow-x: auto;  /* Enable horizontal scrolling if necessary */
+    overflow-x: auto;  /* Enable horizontal scrolling */
     scroll-behavior: smooth;  /* Smooth scrolling */
+    scroll-snap-type: x mandatory;  /* Snap scrolling horizontally */
 }
 
-/* Styling for the product cards */
+/* Each product card should snap into place */
 .product-card {
     display: flex;
     flex-direction: column;
@@ -126,6 +127,7 @@ section {
     transition: transform 0.3s ease-in-out;
     padding: 20px;  /* Padding inside the card */
     text-align: center;  /* Center text inside the card */
+    scroll-snap-align: start;  /* Snap to the start of the card */
 }
 
 /* Zoom effect on hover */
@@ -179,6 +181,11 @@ h5 {
     .product-info {
         font-size: 1rem;  /* Adjust content size for smaller screens */
     }
+    
+    h5 {
+        font-size: 0.9rem;  /* Smaller text for smaller screens */
+    }
+}
     
     h5 {
         font-size: 0.9rem;  /* Smaller text for smaller screens */
