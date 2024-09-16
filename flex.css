@@ -209,7 +209,7 @@ h5 {
 /* Responsive adjustments for smaller screens */
 @media (max-width: 600px) {
     .products {
-        padding-top: 50px;
+        padding-top: 100px;
         padding-bottom: 50px;
     }
     .product-card {
