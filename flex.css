@@ -215,7 +215,7 @@ h5 {
     .product-card {
         flex: 1 1 100%;  /* Full width of the container */
         max-width: 100%;  /* Maximum width is 100% of the container */
-        min-width: 200px;  /* Minimum width for very small screens */
+        min-width: 300px;  /* Minimum width for very small screens */
     }
     
     .product-info {
