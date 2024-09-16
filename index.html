@@ -12,15 +12,16 @@
 
 <body>
 
-    <section class="sale-header">
-        <span>
-                    <img src="img/MakarSonsLogo.jpeg" style="display:block;float:left;">
-        <h1 id="sale">Makar Sons Trading</h1>
-        <h2 id="sale">Canada Inc.</h2>
-        <h3 id="sale" style="display:block;float:right;">Established since 2011</h3>
-        </span>
-
-    </section>
+<section class="sale-header">
+    <div class="sale-container">
+        <img src="img/MakarSonsLogo.jpeg" alt="Makar Sons Logo" class="logo">
+        <div class="title-container">
+            <h1 id="sale">Makar Sons Trading</h1>
+            <h2 id="sale">Canada Inc.</h2>
+        </div>
+        <h3 id="sale" class="established">Established since 2011</h3>
+    </div>
+</section>
 
 
     <section class="products">
@@ -189,55 +190,55 @@
     <br>
     <br>
     <script type='text/javascript'>
-        var scroll = document.querySelector('.products');
-        var scroll1 = document.getElementById('savannah');
-        var scroll2 = document.getElementById('savannah2');
+        // var scroll = document.querySelector('.products');
+        // var scroll1 = document.getElementById('savannah');
+        // var scroll2 = document.getElementById('savannah2');
 
-        scroll.addEventListener('wheel', (evt) => {
-            evt.preventDefault();
+        // scroll.addEventListener('wheel', (evt) => {
+        //     evt.preventDefault();
 
-            var y = evt.clientY;
-            var rect = scroll.getBoundingClientRect();
-            if (rect.top <= y && rect.bottom >= y) {
-                scroll.scrollLeft += evt.deltaY * 0.8;
-            }
-        });
-        scroll1.addEventListener('wheel', (evt) => {
-            evt.preventDefault();
+        //     var y = evt.clientY;
+        //     var rect = scroll.getBoundingClientRect();
+        //     if (rect.top <= y && rect.bottom >= y) {
+        //         scroll.scrollLeft += evt.deltaY * 0.8;
+        //     }
+        // });
+        // scroll1.addEventListener('wheel', (evt) => {
+        //     evt.preventDefault();
 
-            var y = evt.clientY;
-            var rect = scroll1.getBoundingClientRect();
-            if (rect.top <= y && rect.bottom >= y) {
-                scroll1.scrollLeft += evt.deltaY * 0.8;
-            }
-        })
-        scroll2.addEventListener('wheel', (evt) => {
-            evt.preventDefault();
+        //     var y = evt.clientY;
+        //     var rect = scroll1.getBoundingClientRect();
+        //     if (rect.top <= y && rect.bottom >= y) {
+        //         scroll1.scrollLeft += evt.deltaY * 0.8;
+        //     }
+        // })
+        // scroll2.addEventListener('wheel', (evt) => {
+        //     evt.preventDefault();
 
-            var y = evt.clientY;
-            var rect = scroll2.getBoundingClientRect();
-            if (rect.top <= y && rect.bottom >= y) {
-                scroll2.scrollLeft += evt.deltaY * 0.8;
-            }
-        })
-
-
+        //     var y = evt.clientY;
+        //     var rect = scroll2.getBoundingClientRect();
+        //     if (rect.top <= y && rect.bottom >= y) {
+        //         scroll2.scrollLeft += evt.deltaY * 0.8;
+        //     }
+        // })
 
 
-        let pos = {
-            top: 0,
-            left: 0,
-            x: 0,
-            y: 0
-        };
-        const mouseMoveHandler = function(e) {
-            // How far the mouse has been moved
 
-            const dx = e.changedTouches[0].clientX - pos.x;
-            console.log(dx, pos);
-            // Scroll the element
-            scroll.scrollLeft = pos.left - (dx * 0.75);
-        };
+
+        // let pos = {
+        //     top: 0,
+        //     left: 0,
+        //     x: 0,
+        //     y: 0
+        // };
+        // const mouseMoveHandler = function(e) {
+        //     // How far the mouse has been moved
+
+        //     const dx = e.changedTouches[0].clientX - pos.x;
+        //     console.log(dx, pos);
+        //     // Scroll the element
+        //     scroll.scrollLeft = pos.left - (dx * 0.75);
+        // };
         //const mouseUpHandler = function() {
        //     scroll.removeEventListener('touchmove', mouseMoveHandler);
        //     scroll.removeEventListener('touchleave', mouseUpHandler);
@@ -245,24 +246,24 @@
          //   scroll.removeEventListener('touchcancel', mouseUpHandler);
 
         //};
-        const mouseDownHandler = function(e) {
+        // const mouseDownHandler = function(e) {
 
-            pos = {
-                // The current scroll
-                left: scroll.scrollLeft,
-                top: scroll.scrollTop,
-                // Get the current mouse position
-                x: e.changedTouches[0].clientX,
-                y: e.changedTouches[0].clientY,
-            };
+        //     pos = {
+        //         // The current scroll
+        //         left: scroll.scrollLeft,
+        //         top: scroll.scrollTop,
+        //         // Get the current mouse position
+        //         x: e.changedTouches[0].clientX,
+        //         y: e.changedTouches[0].clientY,
+        //     };
 
-            scroll.addEventListener('touchmove', mouseMoveHandler);
-            scroll.addEventListener('touchleave', mouseUpHandler);
-            scroll.addEventListener('touchend', mouseUpHandler);
-            scroll.addEventListener('touchcancel', mouseUpHandler);
-        };
+        //     scroll.addEventListener('touchmove', mouseMoveHandler);
+        //     scroll.addEventListener('touchleave', mouseUpHandler);
+        //     scroll.addEventListener('touchend', mouseUpHandler);
+        //     scroll.addEventListener('touchcancel', mouseUpHandler);
+        // };
 
-        scroll.addEventListener('touchstart', mouseDownHandler);
+        // scroll.addEventListener('touchstart', mouseDownHandler);
 
 
 
