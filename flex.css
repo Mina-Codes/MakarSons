@@ -209,8 +209,9 @@ h5 {
 /* Responsive adjustments for smaller screens */
 @media (max-width: 600px) {
     .product-card {
-        min-width: 200px;  /* Reduce card size for small screens */
-        max-width: 200px;
+        flex: 1 1 100%;  /* Full width of the container */
+        max-width: 100%;  /* Maximum width is 100% of the container */
+        min-width: 200px;  /* Minimum width for very small screens */
     }
     
     .product-info {
