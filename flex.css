@@ -18,6 +18,16 @@ html {
     align-items: center;
 }
 
+.products-grid {
+    display: flex;
+    flex-direction: row;
+    scroll-behavior: smooth;  /* Smooth scrolling */
+    gap: 16px;  /* Space between product cards */
+    padding: 20px;
+    justify-content: flex-start;  /* Align items to the start */
+    align-items: center;
+}
+
 .product-card {
     min-width: 300px;  /* Same size dynamically for all cards */
     max-width: 300px;  /* Limit max width for uniformity */
