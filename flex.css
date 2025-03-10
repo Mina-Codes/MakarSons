@@ -20,12 +20,15 @@ html {
 
 .products-grid {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    scroll-behavior: smooth;  /* Smooth scrolling */
+    justify-content: flex-start;  /* Align items to the start to ensure first card is visible */
     gap: 16px;  /* Space between product cards */
     padding: 20px;
-    justify-content: flex-start;  /* Align items to the start */
-    align-items: center;
+    padding-left: 40px;  /* Add padding to the left to ensure the first card is not cut off */
+    overflow-x: auto;  /* Enable horizontal scrolling */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+    scroll-snap-type: x mandatory;  /* Snap scrolling horizontally */
 }
 
 .product-card {
