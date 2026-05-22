@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Collection — Makar Sons Trading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Italiana&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold-900: #6E4F12; --gold-800: #8C6620; --gold-700: #A87F2E;
+      --gold-600: #C09A4A; --gold-500: #D4B36A; --gold-400: #E2C68A;
+      --gold-300: #EDD9AF; --gold-200: #F4E7CC; --gold-100: #FAF3E0;
+      --ivory-50: #FBF8F1; --ivory-100: #F6F1E5; --ivory-200: #EDE5D2;
+      --char-1000: #0E0D0B; --char-900: #1C1A17; --char-800: #2A2722;
+      --char-700: #3A362F; --char-600: #57514A; --char-500: #7A736A;
+      --char-400: #A39B91; --char-300: #C8C1B6; --char-200: #DFD9CE;
+      --bg-page: var(--ivory-50); --bg-surface: #FFFFFF;
+      --fg-primary: var(--char-900); --fg-secondary: var(--char-600);
+      --fg-accent: var(--gold-700);
+      --line: var(--char-200); --line-on-dark: rgba(245,235,215,0.14);
+      --font-display: "Cormorant Garamond","EB Garamond",Georgia,serif;
+      --font-accent: "Italiana","Cormorant Garamond",Georgia,serif;
+      --font-sans: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --r-sm: 4px; --r-md: 8px; --r-lg: 14px;
+      --sh-1: 0 1px 2px rgba(28,26,23,.04),0 1px 1px rgba(28,26,23,.03);
+      --sh-2: 0 6px 18px -8px rgba(28,26,23,.18),0 2px 4px rgba(28,26,23,.04);
+      --sh-gold: 0 14px 36px -16px rgba(168,127,46,.55);
+      --ease-out: cubic-bezier(0.22,1,0.36,1);
+      --dur-fast: 180ms; --dur-med: 320ms; --dur-slow: 560ms;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg-page); color: var(--fg-primary);
+      font-family: var(--font-sans); font-size: 16px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+
+    /* ---- ANNOUNCE ---- */
+    .announce {
+      background: var(--char-1000); color: var(--ivory-200);
+      font-family: var(--font-sans); font-size: 12px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 10px 24px; text-align: center;
+    }
+    .announce strong { color: var(--gold-500); }
+    .announce__dot {
+      display: inline-block; width: 3px; height: 3px;
+      background: var(--gold-500); border-radius: 50%;
+      vertical-align: middle; margin: 0 14px; transform: translateY(-2px);
+    }
+
+    /* ---- HEADER ---- */
+    .header {
+      position: sticky; top: 0; z-index: 50; width: 100%;
+      background: rgba(251,248,241,0.84);
+      backdrop-filter: blur(14px) saturate(1.1);
+      -webkit-backdrop-filter: blur(14px) saturate(1.1);
+      border-bottom: 1px solid var(--line);
+    }
+    .header__bar {
+      max-width: 1440px; margin: 0 auto;
+      padding: 22px 96px;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; gap: 32px;
+    }
+    .header__logo { display: flex; align-items: center; gap: 12px; justify-self: start; }
+    .header__logo-mark {
+      width: 10px; height: 10px;
+      background: var(--gold-700); transform: rotate(45deg); flex-shrink: 0;
+    }
+    .header__logo-text {
+      font-family: var(--font-display); font-weight: 500; font-size: 22px;
+      letter-spacing: 0.02em; color: var(--char-900); line-height: 1;
+    }
+    .header__logo-sub {
+      display: block; font-family: var(--font-sans);
+      font-size: 9px; font-weight: 500; letter-spacing: 0.32em;
+      color: var(--gold-700); text-transform: uppercase; margin-top: 4px;
+    }
+    .header__nav { display: flex; gap: 44px; justify-self: center; }
+    .header__link {
+      position: relative; font-family: var(--font-sans);
+      font-weight: 500; font-size: 12px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--char-900); padding: 6px 0;
+      transition: color var(--dur-fast) var(--ease-out);
+    }
+    .header__link::after {
+      content: ""; position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 1px; background: var(--gold-700);
+      transition: width var(--dur-med) var(--ease-out);
+    }
+    .header__link:hover { color: var(--gold-700); }
+    .header__link:hover::after, .header__link.is-active::after { width: 100%; }
+    .header__link.is-active { color: var(--gold-700); }
+    .header__actions { display: flex; align-items: center; gap: 12px; justify-self: end; }
+    .header__icon-btn {
+      width: 38px; height: 38px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: transparent; border: 1px solid transparent;
+      border-radius: var(--r-sm); color: var(--char-900);
+      transition: all var(--dur-fast) var(--ease-out);
+    }
+    .header__icon-btn:hover { background: var(--ivory-100); border-color: var(--line); }
+    .header__icon-btn svg { width: 18px; height: 18px; }
+
+    /* ---- EYEBROW ---- */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans); font-weight: 500; font-size: 11px;
+      letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-700);
+    }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--gold-700); }
+    .eyebrow--on-dark { color: var(--gold-500); }
+    .eyebrow--on-dark::before { background: var(--gold-500); }
+
+    /* ---- PAGE HERO ---- */
+    .page-hero { background: var(--char-900); padding: 96px 96px 80px; }
+    .page-hero__inner { max-width: 1440px; margin: 0 auto; }
+    .page-hero__title {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: 1.0; letter-spacing: -0.02em;
+      color: var(--ivory-100); margin: 24px 0 20px;
+    }
+    .page-hero__title em { font-style: italic; font-weight: 300; color: var(--gold-500); }
+    .page-hero__sub {
+      font-family: var(--font-sans); font-size: 17px;
+      color: var(--char-300); max-width: 560px; line-height: 1.6;
+    }
+
+    /* ---- JUMP NAV ---- */
+    .jump-nav {
+      background: var(--ivory-100);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 67px; z-index: 40;
+    }
+    .jump-nav__inner {
+      max-width: 1440px; margin: 0 auto;
+      padding: 0 96px;
+      display: flex; gap: 0; overflow-x: auto;
+    }
+    .jump-nav__link {
+      font-family: var(--font-sans); font-size: 11px;
+      font-weight: 500; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--char-600);
+      padding: 16px 24px;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+    }
+    .jump-nav__link:hover { color: var(--gold-700); border-color: var(--gold-700); }
+
+    /* ---- HOUSE SECTIONS ---- */
+    .house { padding: 96px 96px 80px; border-bottom: 1px solid var(--line); }
+    .house--dark { background: var(--char-900); border-bottom: 1px solid var(--line-on-dark); }
+    .house--alt { background: var(--ivory-100); }
+    .house__inner { max-width: 1440px; margin: 0 auto; }
+    .house__head { margin-bottom: 56px; }
+    .house__title {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1.05; letter-spacing: -0.02em;
+      color: var(--char-900); margin: 16px 0 12px;
+    }
+    .house--dark .house__title { color: var(--ivory-100); }
+    .house__desc {
+      font-family: var(--font-sans); font-size: 16px;
+      color: var(--char-600); max-width: 560px; line-height: 1.65;
+    }
+    .house--dark .house__desc { color: var(--char-300); }
+
+    /* ---- PRODUCT GRID ---- */
+    .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .prod-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .prod {
+      background: var(--bg-surface); border: 1px solid var(--line);
+      border-radius: var(--r-md); overflow: hidden;
+      transition: box-shadow var(--dur-med) var(--ease-out);
+    }
+    .prod:hover { box-shadow: var(--sh-2); }
+    .house--dark .prod { background: var(--char-800); border-color: var(--line-on-dark); }
+    .prod__img {
+      aspect-ratio: 1/1; background: var(--ivory-100);
+      display: grid; place-items: center; overflow: hidden;
+    }
+    .house--dark .prod__img { background: var(--char-700); }
+    .prod__img img {
+      width: 100%; height: 100%;
+      object-fit: contain; padding: 20px;
+      transition: transform var(--dur-slow) var(--ease-out);
+    }
+    .prod:hover .prod__img img { transform: scale(1.05); }
+    .prod__body { padding: 18px 20px 22px; }
+    .prod__house {
+      font-family: var(--font-sans); font-size: 10px;
+      font-weight: 500; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--gold-700); margin-bottom: 6px;
+    }
+    .house--dark .prod__house { color: var(--gold-500); }
+    .prod__name {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 19px; line-height: 1.2; color: var(--char-900);
+      margin: 0 0 6px; letter-spacing: -0.01em;
+    }
+    .house--dark .prod__name { color: var(--ivory-100); }
+    .prod__desc {
+      font-family: var(--font-sans); font-size: 13px;
+      color: var(--char-500); line-height: 1.5; margin-bottom: 16px;
+    }
+    .house--dark .prod__desc { color: var(--char-400); }
+    .prod__cta {
+      font-family: var(--font-sans); font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--char-900); font-weight: 500;
+      display: inline-flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid var(--gold-700); padding-bottom: 3px;
+    }
+    .house--dark .prod__cta { color: var(--ivory-100); }
+    .prod__cta svg { width: 11px; height: 11px; color: var(--gold-700); transition: transform var(--dur-med) var(--ease-out); }
+    .prod:hover .prod__cta svg { transform: translateX(4px); }
+
+    /* ---- FOOTER ---- */
+    .footer { background: var(--char-1000); color: var(--ivory-200); padding: 96px 0 0; position: relative; }
+    .footer__inner { max-width: 1440px; margin: 0 auto; padding: 0 96px; }
+    .footer__top {
+      display: grid; grid-template-columns: 1.5fr 1fr;
+      gap: 64px; justify-items: start; text-align: left;
+      padding-bottom: 64px; border-bottom: 1px solid var(--line-on-dark);
+    }
+    .footer__top > div,
+    .footer__col { text-align: left; }
+    .footer__top .header__logo { justify-content: flex-start; }
+    .footer__logo-text { color: var(--ivory-100); }
+    .footer__tag {
+      font-family: var(--font-display); font-weight: 400; font-size: 22px;
+      line-height: 1.35; color: var(--ivory-200); margin: 28px 0 32px; max-width: 340px;
+    }
+    .footer__tag em { font-style: italic; font-weight: 300; color: var(--gold-500); }
+    .footer__contact { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+    .footer__contact li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-family: var(--font-sans); font-size: 14px; color: var(--char-300); line-height: 1.55;
+    }
+    .footer__contact svg { width: 16px; height: 16px; color: var(--gold-500); margin-top: 2px; flex-shrink: 0; }
+    .footer__col-title {
+      font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-500); margin: 0 0 22px;
+    }
+    .footer__col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .footer__col a { font-family: var(--font-sans); font-size: 14px; color: var(--ivory-200); transition: color var(--dur-fast) var(--ease-out); }
+    .footer__col a:hover { color: var(--gold-500); }
+    .footer__bottom {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      gap: 20px; padding: 32px 0;
+    }
+    .footer__copy { font-family: var(--font-sans); font-size: 12px; color: var(--char-400); letter-spacing: 0.04em; }
+    .footer__socials { display: flex; gap: 8px; }
+    .footer__social {
+      width: 36px; height: 36px; border: 1px solid var(--line-on-dark);
+      border-radius: 50%; display: grid; place-items: center; color: var(--ivory-200);
+      transition: all var(--dur-fast) var(--ease-out);
+    }
+    .footer__social:hover { color: var(--gold-500); border-color: var(--gold-500); }
+    .footer__social svg { width: 15px; height: 15px; }
+    .footer__back {
+      position: absolute; right: 96px; margin-top: -28px;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--gold-700); color: var(--ivory-50);
+      display: grid; place-items: center;
+      transition: transform var(--dur-med) var(--ease-out);
+    }
+    .footer__back:hover { transform: translateY(-4px); }
+    .footer__back svg { width: 18px; height: 18px; }
+
+    @media (max-width: 1100px) {
+      .header__bar { padding-left: 40px; padding-right: 40px; }
+      .page-hero { padding: 72px 40px 60px; }
+      .house { padding: 72px 40px 60px; }
+      .jump-nav__inner { padding: 0 40px; }
+      .footer__inner { padding: 0 40px; }
+      .footer__back { right: 40px; }
+    }
+    @media (max-width: 820px) {
+      .header__bar { grid-template-columns: 1fr 1fr; padding: 16px 24px; }
+      .header__nav { display: none; }
+      .page-hero { padding: 64px 24px; }
+      .house { padding: 64px 24px; }
+      .jump-nav__inner { padding: 0 24px; }
+      .prod-grid { grid-template-columns: 1fr 1fr; }
+      .prod-grid--3 { grid-template-columns: 1fr 1fr; }
+      .footer__inner { padding: 0 24px; }
+      .footer__top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer__back { right: 24px; }
+    }
+    @media (max-width: 520px) {
+      .prod-grid, .prod-grid--3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="announce">
+  <span>Authenticated at origin</span>
+  <span class="announce__dot"></span>
+  <strong>Complimentary</strong> delivery within Ontario
+  <span class="announce__dot"></span>
+</div>
+
+<header class="header">
+  <div class="header__bar">
+    <a href="index.html" class="header__logo">
+      <span class="header__logo-mark"></span>
+      <span>
+        <span class="header__logo-text">Makar Sons Trading Inc.</span>
+        <span class="header__logo-sub">Trading · Est. Curators</span>
+      </span>
+    </a>
+    <nav class="header__nav">
+      <a href="index.html" class="header__link">Home</a>
+      <a href="products.html" class="header__link is-active">Products</a>
+      <a href="index.html#about" class="header__link">About</a>
+      <a href="index.html#contact" class="header__link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero__inner">
+    <span class="eyebrow eyebrow--on-dark">The Complete Catalogue</span>
+    <h1 class="page-hero__title">Eight houses.<br><em>One standard.</em></h1>
+    <p class="page-hero__sub">Hand-selected from the world's finest makers. Authenticated at origin, sealed in transit, delivered to you untouched.</p>
+  </div>
+</div>
+
+<nav class="jump-nav">
+  <div class="jump-nav__inner">
+    <a href="#oud" class="jump-nav__link">Oud &amp; Fragrances</a>
+    <a href="#walkers" class="jump-nav__link">Walker's Nonsuch</a>
+    <a href="#silk" class="jump-nav__link">Silk Dubai</a>
+    <a href="#savannah" class="jump-nav__link">Savannah</a>
+    <a href="#lervia" class="jump-nav__link">Lervia</a>
+    <a href="#lark" class="jump-nav__link">Lark</a>
+    <a href="#harmony" class="jump-nav__link">Harmony</a>
+    <a href="#nova" class="jump-nav__link">Nova</a>
+  </div>
+</nav>
+
+<!-- OUD & FRAGRANCES -->
+<section class="house house--dark" id="oud">
+  <div class="house__inner">
+    <div class="house__head">
+      <span class="eyebrow eyebrow--on-dark">i. · Middle East</span>
+      <h2 class="house__title">Oud &amp; Fragrances</h2>
+      <p class="house__desc">Authentic Arabic extrait de parfum and rare incense, decanted in small batches and sealed at origin. Fifth-generation craft from the Arabian Peninsula.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod"><div class="prod__img"><img src="img/Oud_1.png" alt="Oud &amp; Flowers"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud &amp; Flowers</h3><p class="prod__desc">Extrait de Parfum. Rosa damascena over deep oud.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_3.png" alt="Oud Extrait"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud Extrait de Parfum</h3><p class="prod__desc">Pure oud resin distillation. 100ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_5.png" alt="Oud Soap Bar"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud Soap Bar</h3><p class="prod__desc">Luxury bath bar with oud essence. 100g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_8.png" alt="Oud Foam Soap"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud Foam Soap</h3><p class="prod__desc">Gentle foaming hand soap with oud oil. 400ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_9.png" alt="Oud Candle"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud Candle</h3><p class="prod__desc">Hand-poured soy candle with oud and amber. 200g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_10.png" alt="Oud Reed Diffuser"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud Reed Diffuser</h3><p class="prod__desc">Continuous fragrance for 90 days. 200ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_12.png" alt="Oud Air Freshener"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud Air Freshener</h3><p class="prod__desc">Premium spray air freshener. 300ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_14.png" alt="Oud Extrait"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud Extrait — Gold</h3><p class="prod__desc">Concentrated parfum, gold edition. 50ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_15.png" alt="Oud Extrait Collection"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud Extrait — Collection</h3><p class="prod__desc">Limited edition seasonal blend. 30ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_16.png" alt="Oud Hair &amp; Body Mist"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Oud Hair &amp; Body Mist</h3><p class="prod__desc">Light-wear fragrance mist. 200ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_17.png" alt="Fine Fragrance Mist"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Fine Fragrance Mist</h3><p class="prod__desc">Oud and sandalwood body mist. 250ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Oud_13.png" alt="Oud Premium Air Freshener"></div><div class="prod__body"><div class="prod__house">Oud Atelier</div><h3 class="prod__name">Premium Air Freshener</h3><p class="prod__desc">Oud-infused electric diffuser refill. 150ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WALKER'S NONSUCH -->
+<section class="house house--dark" id="walkers">
+  <div class="house__inner">
+    <div class="house__head">
+      <span class="eyebrow eyebrow--on-dark">ii. · England, Est. 1894</span>
+      <h2 class="house__title">Walker's Nonsuch</h2>
+      <p class="house__desc">England's Finest confectionery since 1894. Five generations of the Walker family, one unchanged recipe. A 130-year heritage, delivered fresh.</p>
+    </div>
+    <div class="prod-grid prod-grid--3">
+      <div class="prod"><div class="prod__img"><img src="img/walkers-mixed-toffees-assortment.png" alt="Mixed Toffee Assortment"></div><div class="prod__body"><div class="prod__house">Walker's Nonsuch</div><h3 class="prod__name">Mixed Toffee Assortment</h3><p class="prod__desc">The classic selection. Every variety in one bag.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/walkers-liquorice-toffees-bag.png" alt="Liquorice Toffees"></div><div class="prod__body"><div class="prod__house">Walker's Nonsuch</div><h3 class="prod__name">Liquorice Toffees</h3><p class="prod__desc">Deep liquorice centre, classic toffee shell. 200g bag.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/walkers-salted-caramel-toffees-bag.png" alt="Salted Caramel Toffees"></div><div class="prod__body"><div class="prod__house">Walker's Nonsuch</div><h3 class="prod__name">Salted Caramel Toffees</h3><p class="prod__desc">Sea-salted caramel. A modern take on the 1894 recipe. 200g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/walkers-banana-split-eclair-single.png" alt="Banana Split Éclair"></div><div class="prod__body"><div class="prod__house">Walker's Nonsuch</div><h3 class="prod__name">Banana Split Éclair</h3><p class="prod__desc">Banana cream centre, milk chocolate coat.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/walkers-liquorice-toffee-single.png" alt="Liquorice Toffee Single"></div><div class="prod__body"><div class="prod__house">Walker's Nonsuch</div><h3 class="prod__name">Liquorice Toffee</h3><p class="prod__desc">Individual piece. The original Nonsuch recipe.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/walkers-salted-caramel-toffee-single.png" alt="Salted Caramel Single"></div><div class="prod__body"><div class="prod__house">Walker's Nonsuch</div><h3 class="prod__name">Salted Caramel — Single</h3><p class="prod__desc">Individual piece. Sea-salted caramel toffee.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SILK DUBAI -->
+<section class="house" id="silk">
+  <div class="house__inner">
+    <div class="house__head">
+      <span class="eyebrow">iii. · United Arab Emirates</span>
+      <h2 class="house__title">Silk Dubai</h2>
+      <p class="house__desc">Fine-fragrance hand and hair care from Dubai. Silk's luxury liquid handwashes and shampoos carry the warmth of the Gulf in every drop.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod"><div class="prod__img"><img src="img/Luxury_Handwash_1.jpg" alt="Silk Luxury Handwash"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Luxury Handwash</h3><p class="prod__desc">Premium fine-fragrance handwash. 500ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Luxury_Handwash_2.jpg" alt="Silk Luxury Handwash"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Luxury Handwash — Rose</h3><p class="prod__desc">Rose &amp; oud blend. 500ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Luxury_Handwash_3.jpg" alt="Silk Luxury Handwash"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Luxury Handwash — Musk</h3><p class="prod__desc">White musk and amber. 500ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Luxury_Handwash_4.jpg" alt="Silk Luxury Handwash"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Luxury Handwash — Aqua</h3><p class="prod__desc">Aquamarine and sea minerals. 500ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Luxury_Handwash_5.jpg" alt="Silk Luxury Handwash"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Luxury Handwash — Jasmine</h3><p class="prod__desc">Jasmine and sandalwood. 500ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Luxury_Handwash_6.jpg" alt="Silk Luxury Handwash"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Luxury Handwash — Vetiver</h3><p class="prod__desc">Vetiver and cedar. 500ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/SilkGroup.jpeg" alt="Silk Collection"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Handwash Collection</h3><p class="prod__desc">Full 6-piece gift set. All fragrances.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/SilkShampoo.jpeg" alt="Silk Shampoo &amp; Conditioner"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Shampoo &amp; Conditioner</h3><p class="prod__desc">Fine-fragrance hair care duo. 400ml each.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/SilkSoap.jpeg" alt="Silk Soap Bar"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Silk Soap Bar</h3><p class="prod__desc">Moisturising luxury bar soap. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Silk_Soaps.png" alt="Silk Soap Collection"></div><div class="prod__body"><div class="prod__house">Silk Dubai</div><h3 class="prod__name">Soap Bar Collection</h3><p class="prod__desc">Multi-variety soap gift set. 5 × 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAVANNAH -->
+<section class="house house--alt" id="savannah">
+  <div class="house__inner">
+    <div class="house__head">
+      <span class="eyebrow">iv. · Indonesia · PT. Megasurya Mas</span>
+      <h2 class="house__title">Savannah</h2>
+      <p class="house__desc">Beautifully scented beauty bars and body washes from Indonesia. Savannah's range brings botanical fragrance into everyday care.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod"><div class="prod__img"><img src="img/Savannah_Majesti_Glow.jpg" alt="Majestic Glow"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Majestic Glow</h3><p class="prod__desc">Bergamot and amber beauty bar. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Savannah_Bright_Beautiful.jpg" alt="Bright &amp; Beautiful"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Bright &amp; Beautiful</h3><p class="prod__desc">Citrus blossom and vitamin C bar. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Savannah_Morning_Glow.jpg" alt="Morning Glow"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Morning Glow</h3><p class="prod__desc">Green tea and lemon zest. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Savannah_Exotic_Glow.jpg" alt="Exotic Glow"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Exotic Glow</h3><p class="prod__desc">Frangipani and coconut oil bar. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Savannah_Diamond_Glow.jpg" alt="Diamond Glow"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Diamond Glow</h3><p class="prod__desc">Pearl extract and jasmine. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Savannah_Oriental_Glow.jpg" alt="Oriental Glow"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Oriental Glow</h3><p class="prod__desc">Oud rose and warm spice. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Savannah_Sparking_Fresh.jpg" alt="Sparkling Fresh"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Sparkling Fresh</h3><p class="prod__desc">Aquatic mint and eucalyptus. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Savannah_Mystic_Garden.jpg" alt="Mystic Garden"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Mystic Garden</h3><p class="prod__desc">White gardenia and vetiver. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Savannah_Dreamy.jpg" alt="Dreamy"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Dreamy</h3><p class="prod__desc">Vanilla and shea butter bar. 120g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/savnah_discover_products.jpg" alt="Savannah Range"></div><div class="prod__body"><div class="prod__house">Savannah</div><h3 class="prod__name">Full Range Gift Set</h3><p class="prod__desc">Complete Savannah collection. All 9 variants.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LERVIA -->
+<section class="house" id="lervia">
+  <div class="house__inner">
+    <div class="house__head">
+      <span class="eyebrow">v. · Indonesia · PT. Megasurya Mas</span>
+      <h2 class="house__title">Lervia</h2>
+      <p class="house__desc">Milk &amp; honey beauty bars and shower creams. Lervia's formula is built around nourishing milk proteins for skin that feels genuinely cared for.</p>
+    </div>
+    <div class="prod-grid prod-grid--3">
+      <div class="prod"><div class="prod__img"><img src="img/Brosur LERVIA .jpg" alt="Lervia Milk Soap"></div><div class="prod__body"><div class="prod__house">Lervia</div><h3 class="prod__name">Milk &amp; Honey Bar</h3><p class="prod__desc">Moisturising milk protein beauty bar. 150g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Brosur LERVIA .jpg" alt="Lervia Milk Rose"></div><div class="prod__body"><div class="prod__house">Lervia</div><h3 class="prod__name">Milk &amp; Rose Bar</h3><p class="prod__desc">Bulgarian rose and milk protein. 150g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Brosur LERVIA .jpg" alt="Lervia Shower Cream"></div><div class="prod__body"><div class="prod__house">Lervia</div><h3 class="prod__name">Milk Shower Cream</h3><p class="prod__desc">Creamy body wash with milk extract. 400ml.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LARK -->
+<section class="house house--alt" id="lark">
+  <div class="house__inner">
+    <div class="house__head">
+      <span class="eyebrow">vi. · Indonesia · PT. Megasurya Mas</span>
+      <h2 class="house__title">Lark</h2>
+      <p class="house__desc">Classic bar soap in enduring formats. Lark's 150g bar is a staple of the beauty bar category — consistent, clean, and true.</p>
+    </div>
+    <div class="prod-grid prod-grid--3">
+      <div class="prod"><div class="prod__img"><img src="img/LarkSoap.jpg" alt="Lark Bar Soap"></div><div class="prod__body"><div class="prod__house">Lark</div><h3 class="prod__name">Lark Bar Soap</h3><p class="prod__desc">Classic moisturising beauty bar. 150g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/LarkSoap.jpg" alt="Lark Fresh"></div><div class="prod__body"><div class="prod__house">Lark</div><h3 class="prod__name">Lark Fresh</h3><p class="prod__desc">Refreshing aqua formula bar. 150g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Brochure LARK 150 GR..jpg" alt="Lark Range"></div><div class="prod__body"><div class="prod__house">Lark</div><h3 class="prod__name">Lark Full Range</h3><p class="prod__desc">Complete Lark line. Wholesale enquiry welcome.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HARMONY -->
+<section class="house" id="harmony">
+  <div class="house__inner">
+    <div class="house__head">
+      <span class="eyebrow">vii. · Indonesia · PT. Megasurya Mas</span>
+      <h2 class="house__title">Harmony</h2>
+      <p class="house__desc">Fruity and floral beauty bars. Harmony's 150g soap brings everyday joy through vivid fragrance and creamy lather.</p>
+    </div>
+    <div class="prod-grid prod-grid--3">
+      <div class="prod"><div class="prod__img"><img src="img/HarmonySoap.jpg" alt="Harmony Bar Soap"></div><div class="prod__body"><div class="prod__house">Harmony</div><h3 class="prod__name">Harmony Bar Soap</h3><p class="prod__desc">Fruity floral beauty bar. 150g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/HarmonySoap.jpg" alt="Harmony Rose"></div><div class="prod__body"><div class="prod__house">Harmony</div><h3 class="prod__name">Harmony Rose</h3><p class="prod__desc">Bulgarian rose and peony. 150g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Brochure Harmony Fruity 150 GR..jpg" alt="Harmony Range"></div><div class="prod__body"><div class="prod__house">Harmony</div><h3 class="prod__name">Harmony Fruity Range</h3><p class="prod__desc">Complete Harmony Fruity line. Wholesale enquiry.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NOVA -->
+<section class="house house--alt" id="nova">
+  <div class="house__inner">
+    <div class="house__head">
+      <span class="eyebrow">viii. · Indonesia · PT. Megasurya Mas</span>
+      <h2 class="house__title">Nova</h2>
+      <p class="house__desc">Moisturising beauty bars with a contemporary feel. Nova's 140g formula focuses on skin softness above all else.</p>
+    </div>
+    <div class="prod-grid prod-grid--3">
+      <div class="prod"><div class="prod__img"><img src="img/NovaSoap.jpg" alt="Nova Bar Soap"></div><div class="prod__body"><div class="prod__house">Nova</div><h3 class="prod__name">Nova Bar Soap</h3><p class="prod__desc">Gentle moisturising beauty bar. 140g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/NovaMoisturizingSoap.jpg" alt="Nova Moisturising Soap"></div><div class="prod__body"><div class="prod__house">Nova</div><h3 class="prod__name">Nova Moisturising Soap</h3><p class="prod__desc">Enriched with shea butter. 140g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/NovaSoap.jpg" alt="Nova Fresh"></div><div class="prod__body"><div class="prod__house">Nova</div><h3 class="prod__name">Nova Fresh</h3><p class="prod__desc">Cooling menthol and aloe. 140g.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+  <button class="footer__back" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5"/><path d="m5 12 7-7 7 7"/>
+    </svg>
+  </button>
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div>
+        <a href="index.html" class="header__logo">
+          <span class="header__logo-mark" style="background:var(--gold-500)"></span>
+          <span>
+            <span class="header__logo-text footer__logo-text">Makar Sons Trading Inc.</span>
+            <span class="header__logo-sub">Est. Curators</span>
+          </span>
+        </a>
+        <p class="footer__tag">Premium imports,<br><em>sealed</em> at origin.</p>
+        <ul class="footer__contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-6-7-12a7 7 0 0 1 14 0c0 6-7 12-7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Greater Toronto Area<br>Ontario, Canada</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><span>+1 (647) 783‑1006</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg><span>sabry.makar@rogers.com</span></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Houses</h4>
+        <ul>
+          <li><a href="#oud">Oud &amp; Fragrances</a></li>
+          <li><a href="#walkers">Walker's Nonsuch</a></li>
+          <li><a href="#silk">Silk Dubai</a></li>
+          <li><a href="#savannah">Savannah</a></li>
+          <li><a href="#lervia">Lervia</a></li>
+          <li><a href="#lark">Lark</a></li>
+          <li><a href="#harmony">Harmony</a></li>
+          <li><a href="#nova">Nova</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 Makar Sons Trading Inc. · Toronto, Canada · All rights reserved.</span>
+      <div class="footer__socials">
+        <a href="#" class="footer__social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg></a>
+        <a href="#" class="footer__social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9h3V6h-3a3 3 0 0 0-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9Z"/></svg></a>
+        <a href="#" class="footer__social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v8M7 7v.01M11 18v-5a3 3 0 0 1 6 0v5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
