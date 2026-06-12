@@ -460,6 +460,7 @@
       <div class="prod"><div class="prod__img"><img src="img/Melbon/Filia/Filia%20Biscuit%20Praline.png" alt="Filia Biscuit Praline"></div><div class="prod__body"><div class="prod__house">Filia</div><h3 class="prod__name">Filia Biscuit Praline</h3><p class="prod__desc">Crisp biscuit praline centre, smooth chocolate coat.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
       <div class="prod"><div class="prod__img"><img src="img/Melbon/Filia/Filia%20Cocoa%20Praline.png" alt="Filia Cocoa Praline"></div><div class="prod__body"><div class="prod__house">Filia</div><h3 class="prod__name">Filia Cocoa Praline</h3><p class="prod__desc">Deep cocoa praline with a rich chocolate finish.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
       <div class="prod"><div class="prod__img"><img src="img/Melbon/Filia/Filia%20Hazelnut%20Praline.png" alt="Filia Hazelnut Praline"></div><div class="prod__body"><div class="prod__house">Filia</div><h3 class="prod__name">Filia Hazelnut Praline</h3><p class="prod__desc">Roasted hazelnut praline in milk chocolate.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
+      <div class="prod"><div class="prod__img"><img src="img/Melbon/Filia/Filia%20Merry%20Christmas.png" alt="Filia Merry Christmas"></div><div class="prod__body"><div class="prod__house">Filia</div><h3 class="prod__name">Filia Merry Christmas</h3><p class="prod__desc">Roasted hazelnut praline in milk chocolate.</p><a href="#contact" class="prod__cta">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div>
     </div>
     <p style="font-family:var(--font-sans);font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-700);margin-bottom:20px;">Pouro</p>
     <div class="prod-grid">
@@ -658,6 +659,33 @@
   </div>
 </footer>
 
+<button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="
+  position:fixed; bottom:32px; right:32px; z-index:999;
+  width:48px; height:48px; border-radius:50%;
+  background:var(--char-900); color:var(--ivory-50);
+  border:1px solid var(--gold-700);
+  display:grid; place-items:center;
+  cursor:pointer; opacity:0; pointer-events:none;
+  transition:opacity 220ms ease, transform 220ms ease, background 180ms ease;
+  box-shadow:0 4px 16px rgba(14,13,11,.28);
+">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5"/><path d="m5 12 7-7 7 7"/>
+  </svg>
+</button>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function(){
+    var show = window.scrollY > 400;
+    btn.style.opacity = show ? '1' : '0';
+    btn.style.pointerEvents = show ? 'auto' : 'none';
+    btn.style.transform = show ? 'translateY(0)' : 'translateY(8px)';
+  }, {passive:true});
+  btn.addEventListener('mouseenter', function(){ btn.style.background = 'var(--gold-700)'; });
+  btn.addEventListener('mouseleave', function(){ btn.style.background = 'var(--char-900)'; });
+})();
+</script>
 <script>
 (function () {
   var btn = document.querySelector('.header__menu-btn');
